@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Transaction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="form_container">
+        <h1>Add Transaction</h1>
+        <form action="{{ url_for('add_transaction') }}" method="POST">
+            <div class="form_group">
+                <label for="date" class="form_label">Date:</label>
+                <input type="date" name="date" id="date" class="form_input" required>
+            </div>
+
+            <div class="form_group">
+                <label for="amount" class="form_label">Amount:</label>
+                <input type="number" name="amount" id="amount" class="form_input" required>
+            </div>
+
+            <div class="form_group">
+                <label for="account" class="form_label">Account:</label>
+                <select name="account" id="account" class="form_select" required>
+                    <option value="Checking">Checking</option>
+                    <option value="Savings">Savings</option>
+                    <option value="Investment">Investment</option>
+                </select>
+            </div>
+
+            <div class="form_group">
+                <input class="form_submit form_input" type="submit" value="Add Transaction">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
