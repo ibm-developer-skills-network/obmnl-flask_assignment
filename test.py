@@ -1,56 +1,43 @@
 import unittest
-from flask_testing import TestCase
-
-# Import the Flask app
 from app import app, transactions
 
-
-class FlaskAppTestCase(TestCase):
-    def create_app(self):
-        # Set the Flask app to be tested
-        app.config['TESTING'] = True
-        return app
-
+class FlaskAppTestCase(unittest.TestCase):
     def setUp(self):
-        print("running before each test")
-        # Add sample data for testing
-        transactions.append({'id': 1, 'date': '2023-06-01', 'amount': 100, 'account': 'Checking'})
-        transactions.append({'id': 2, 'date': '2023-06-02', 'amount': 200, 'account': 'Savings'})
+        # Configure the Flask app for testing
+        app.testing = True
+        self.client = app.test_client()
 
-    def tearDown(self):
-        print("running after each test")
-        # Clear the sample data after each test
+        # Set up sample data for testing
         transactions.clear()
+        transactions.extend([
+            {'id': 1, 'date': '2023-06-01', 'amount': 100},
+            {'id': 2, 'date': '2023-06-02', 'amount': -200}
+        ])
 
-    def test_get_transaction(self):
-        print("test_get_transaction")
-        # --- Fill the missing code here --- # 
+    # Test getting the transactions list ("/" route)
+    def test_get_transactions(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)  # Expect a successful response
 
-    def test_add_transaction_form(self):
-        print("test_add_transaction_form")
-        # --- Fill the missing code here --- # 
-
-    def test_add_transaction(self):
-        print("test_add_transaction")
-        data = {'date': '2023-06-03', 'amount': 300, 'account': 'Investment'}
-        response = self.client.post('/add', data=data, follow_redirects=True)
-        self.assertEqual(response.status_code, 200) # or self.assert200(response) or self.assertTrue(response.status_code==200)
-        self.assertTemplateUsed('transactions.html') # to check that the correct template is used
-        # --- Fill the missing code here --- # 
-
-    def test_edit_transaction_form(self):
-        print("test_edit_transaction_form")
-        # --- Fill the missing code here --- # 
-        self.assertEqual(response.status_code, 200) # or self.assert200(response) or self.assertTrue(response.status_code==200)
-        self.assertTemplateUsed('edit.html') # to check that the correct template is used
-
+    # Test adding a new transaction ("/add" route)
+    def test_add_transaction(self): 
+        data = {'date': '2023-06-03', 'amount': 300}
+        response = self.client.post('/add', data=data)
+        # ---- Practice 3 ----#
+        # Expect the transactions list to have 3 items
+    
+    # Test deleting a transaction ("/delete/<transaction_id>" route)   
     def test_delete_transaction(self):
-        print("test_delete_transaction")
-        response = self.client.get('/delete/1', follow_redirects=True)
-        self.assertEqual(response.status_code, 200) # or self.assert200(response) or self.assertTrue(response.status_code==200)
-        self.assertTemplateUsed('transactions.html') # to check that the correct template is used
-        # --- Fill the missing code here --- # 
+        response = self.client.get('/delete/1')
+        self.assertEqual(len(transactions), 1)  # Expect the transactions list to have 1 item
 
-
+    # Test editing an existing transaction ("/edit/<transaction_id>" route)
+    def test_edit_transaction(self):
+        data = {'date': '2023-06-01', 'amount': 150}
+        response = self.client.post('/edit/1', data=data)
+        # ---- Practice 4 ----#
+        # Expect the amount of the first transaction to be updated
+        
+        
 if __name__ == '__main__':
     unittest.main()

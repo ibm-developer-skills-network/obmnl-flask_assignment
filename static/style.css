@@ -1,48 +1,62 @@
 /* Add custom styles here */
 body {
-font-family: Arial, sans-serif;
-padding: 20px;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #eaf9fb;
 }
 
 h1, h2 {
-text-align: center;
+  text-align: center;
+}
+
+a{
+  text-decoration:none;
 }
 
 .form_container {
-max-width: 400px;
-margin: 0 auto;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .form_group {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form_label {
-display: block;
-margin-bottom: 5px;
-font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .form_input {
-width: 100%;
-padding: 10px;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .form_select {
-height: 38px;
+  height: 38px;
 }
 
 .form_submit {
-background-color: #4CAF50;
-color: white;
-border: none;
-padding: 10px;
-cursor: pointer;
-border-radius: 4px;
-width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+}
+
+
+
+.center_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .result_container {
