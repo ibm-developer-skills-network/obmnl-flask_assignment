@@ -10,7 +10,7 @@ transactions = [
     {'id': 3, 'date': '2023-06-03', 'amount': 300}
 ]
 
-# ---- Practice 1 ----#
+# ---- Task 1 ----#
 # Read operation
 
 
@@ -46,7 +46,7 @@ def delete_transaction(transaction_id):
     # Redirect to the transactions list page
     return redirect(url_for("get_transactions"))
 
-# ---- Practice 2 ----#
+# ---- Task 2 ----#
 # Update operation
 
 

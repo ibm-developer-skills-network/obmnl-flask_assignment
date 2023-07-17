@@ -23,7 +23,7 @@ class FlaskAppTestCase(unittest.TestCase):
     def test_add_transaction(self): 
         data = {'date': '2023-06-03', 'amount': 300}
         response = self.client.post('/add', data=data)
-        # ---- Practice 3 ----#
+        # ---- Task 3 ----#
         # Expect the transactions list to have 3 items
     
     # Test deleting a transaction ("/delete/<transaction_id>" route)   
@@ -35,7 +35,7 @@ class FlaskAppTestCase(unittest.TestCase):
     def test_edit_transaction(self):
         data = {'date': '2023-06-01', 'amount': 150}
         response = self.client.post('/edit/1', data=data)
-        # ---- Practice 4 ----#
+        # ---- Task 4 ----#
         # Expect the amount of the first transaction to be updated
         
         
