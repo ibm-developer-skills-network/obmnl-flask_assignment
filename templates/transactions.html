@@ -3,23 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #f6d365, #fda085);
+            color: #333;
+        }
+
+        .container {
+            border: 2px solid #f6d365;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .transaction-table {
+            margin-top: 20px;
+        }
+
+        .transaction-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="form_container">
-        <h1>Transactions</h1>
-        <ul>
-            {% for transaction in transactions %}
-            <li>
-                <span>Date: {{ transaction.date }}</span>
-                <span>Amount: {{ transaction.amount }}</span>
-                <button onclick="location.href='{{ url_for('edit_transaction', transaction_id=transaction.id) }}'">Edit</button>
-                <button onclick="location.href='{{ url_for('delete_transaction', transaction_id=transaction.id) }}'">Delete</button>
-            </li>
-            {% endfor %}
-        </ul>
-        <div class="form_group">
-            <a class="form_submit form_input center_btn" href="{{ url_for('add_transaction') }}">Add Transaction</a>
+    <div class="container">
+        <h1 class="text-center">Transaction Records</h1>
+
+        <table class="table transaction-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td class="transaction-actions">
+                        <a class="btn btn-sm btn-primary" href="{{ url_for('edit_transaction', transaction_id=transaction.id) }}">Edit</a>
+                        <a class="btn btn-sm btn-danger" href="{{ url_for('delete_transaction', transaction_id=transaction.id) }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-success" href="{{ url_for('add_transaction') }}">Add Transaction</a>
         </div>
     </div>
 </body>

@@ -3,24 +3,46 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Transaction</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #f6d365, #fda085);
+            color: #333;
+        }
+
+        .container {
+            border: 2px solid #f6d365;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-    <div class="form_container">
-        <h1>Add Transaction</h1>
+    <div class="container">
+        <h1 class="text-center">Add Transaction</h1>
         <form action="{{ url_for('add_transaction') }}" method="POST">
-            <div class="form_group">
-                <label for="date" class="form_label">Date:</label>
-                <input type="date" name="date" id="date" class="form_input" required>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="date" class="form-control" required>
             </div>
 
-            <div class="form_group">
-                <label for="amount" class="form_label">Amount:</label>
-                <input type="number" name="amount" id="amount" class="form_input" required>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" name="amount" id="amount" class="form-control" required>
             </div>
 
-            <div class="form_group">
-                <input class="form_submit form_input" type="submit" value="Add Transaction">
+            <div class="form-footer">
+                <input class="btn btn-success" type="submit" value="Add Transaction">
+                <a class="btn btn-info" href="{{ url_for('get_transactions') }}">Go Back</a>
             </div>
         </form>
     </div>
