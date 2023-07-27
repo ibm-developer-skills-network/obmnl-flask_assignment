@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #f6d365, #fda085);
+            color: #333;
+        }
+
+        .container {
+            border: 2px solid #f6d365;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: #f6d365;
+            border-color: #f6d365;
+        }
+
+        .btn-primary:hover {
+            background-color: #f6d365;
+            border-color: #f6d365;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Search Transactions</h1>
+        <form class="form-container" method="post">
+            <div class="form-group">
+                <label for="min_amount">Minimum Amount:</label>
+                <input type="number" class="form-control" id="min_amount" name="min_amount" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="max_amount">Maximum Amount:</label>
+                <input type="number" class="form-control" id="max_amount" name="max_amount" step="0.01" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
