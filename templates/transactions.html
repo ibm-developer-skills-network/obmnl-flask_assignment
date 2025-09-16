@@ -34,6 +34,10 @@
             border-color: #f6d365;
         }
 
+        .custom-gap {
+            margin-right: 20px; /* Set the desired space */
+        }
+
         .btn-primary:hover {
             background-color: #f6d365;
             border-color: #f6d365;
@@ -67,7 +71,8 @@
         </table>
 
         <div class="d-flex justify-content-center">
-            <a class="btn btn-success" href="{{ url_for('add_transaction') }}">Add Transaction</a>
+            <a class="btn btn-success custom-gap" href="{{ url_for('add_transaction') }}">Add Transaction</a>
+            <a class="btn btn-success" href="{{ url_for('show_balance') }}" target="_blank">Balance</a>
         </div>
     </div>
 </body>
